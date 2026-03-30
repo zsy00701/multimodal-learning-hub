@@ -6,12 +6,12 @@
   --bg-hover: #f5f5f4;
   --bg-nav: rgba(250, 250, 249, 0.92);
   --text: #1c1917;
-  --text-2: #57534e;
-  --text-3: #a8a29e;
+  --text-2: #44403c;
+  --text-3: #78716c;
   --accent: #2563eb;
   --accent-light: #eff6ff;
-  --border: #e7e5e4;
-  --border-hover: #d6d3d1;
+  --border: #e2e0de;
+  --border-hover: #c8c4c0;
   --green: #16a34a;
   --green-bg: #f0fdf4;
   --amber: #d97706;
@@ -23,8 +23,8 @@
   --cyan: #0891b2;
   --cyan-bg: #ecfeff;
   --radius: 8px;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
   --transition: 0.15s ease;
 }
 
@@ -290,7 +290,7 @@ body {
 
 .card:hover {
   border-color: var(--border-hover);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.06);
 }
 .card:hover::before { opacity: 0.6; }
 
@@ -322,18 +322,18 @@ body {
 .card-action-btn {
   display: inline-flex; align-items: center; gap: 3px;
   padding: 3px 8px; border-radius: 4px;
-  background: transparent; border: 1px solid var(--border);
-  color: var(--text-3); cursor: pointer;
+  background: var(--bg-hover); border: 1px solid var(--border);
+  color: var(--text-2); cursor: pointer;
   font-size: 0.66rem; font-weight: 500; font-family: inherit;
   transition: all var(--transition);
 }
-.card-action-btn:hover { background: var(--bg-hover); color: var(--text-2); border-color: var(--border-hover); }
+.card-action-btn:hover { background: #eee; color: var(--text); border-color: var(--border-hover); }
 .card-action-btn.active { background: var(--green-bg); color: var(--green); border-color: #bbf7d0; }
 .card-action-btn.bookmarked { background: var(--amber-bg); color: var(--amber); border-color: #fde68a; }
 
 .study-time {
   display: inline-flex; align-items: center; gap: 3px;
-  font-size: 0.64rem; color: var(--text-3); font-weight: 500;
+  font-size: 0.64rem; color: var(--text-2); font-weight: 500;
   margin-left: auto;
 }
 
@@ -341,7 +341,7 @@ body {
 .sub-items { list-style: none; padding: 2px 0; }
 
 .sub-items li {
-  padding: 3px 0; border-bottom: 1px solid #fafaf9;
+  padding: 3px 0; border-bottom: 1px solid #f0efee;
   font-size: 0.78rem; color: var(--text-2);
   display: flex; gap: 6px; align-items: flex-start; line-height: 1.6;
 }
