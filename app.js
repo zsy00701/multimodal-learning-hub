@@ -100,9 +100,6 @@ function showToast(message) {
   toast._timer = setTimeout(() => toast.classList.remove('show'), 2000);
 }
 
-/* ========== Particles — disabled for clean theme ========== */
-function initParticles() { /* no-op for clean theme */ }
-
 /* ========== Animated Counter ========== */
 function animateCounter(el, target) {
   const duration = 1500, startTime = performance.now();
@@ -125,8 +122,6 @@ function initApp() {
   const streak = updateStreak();
   
   let html = '';
-  html += `<canvas id="particleCanvas"></canvas>`;
-  html += `<div class="bg-glow"></div><div class="bg-mesh"></div>`;
   html += `<div class="progress-bar" id="progressBar" style="width:0%"></div>`;
   html += `<div class="container">`;
 
@@ -338,7 +333,6 @@ function initApp() {
   html += `<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>`;
   
   container.innerHTML = html;
-  initParticles();
   initCounterAnimations();
   initCardObserver();
   initCardMouseTracking();

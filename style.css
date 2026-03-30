@@ -46,11 +46,6 @@ body {
 ::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 99px; }
 ::-webkit-scrollbar-thumb:hover { background: #a8a29e; }
 
-/* Hide all fancy backgrounds */
-.bg-glow, .bg-mesh { display: none; }
-body::before, body::after { display: none !important; }
-#particleCanvas { display: none !important; }
-
 .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
 
 /* ========== Hero ========== */
@@ -295,7 +290,7 @@ body::before, body::after { display: none !important; }
 
 .card:hover {
   border-color: var(--border-hover);
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
 }
 .card:hover::before { opacity: 0.6; }
 
@@ -560,7 +555,7 @@ footer kbd {
 
 /* Print */
 @media print {
-  .bg-glow, .bg-mesh, #particleCanvas, .nav-sticky, .back-to-top, .search-wrap, .search-result, .progress-bar, .overall-progress, .toast { display: none !important; }
+  .nav-sticky, .back-to-top, .search-wrap, .search-result, .progress-bar, .overall-progress, .toast { display: none !important; }
   .card { break-inside: avoid; }
   .section { display: block !important; }
 }
