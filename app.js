@@ -14,14 +14,14 @@ const NAV_GROUPS = [
 
 /* Section accent color mapping */
 const SECTION_ACCENTS = {
-  'overview': '#6c8aff', 'math': '#8ba3ff', 'dl': '#b07cff', 'cv': '#3dd68c',
-  'nlp': '#5cc9f5', 'cs-fundamentals': '#ef9052', 'transformer': '#f0b429', 'arch-internals': '#b07cff',
-  'llm': '#ef9052', 'tokenization': '#3dd68c', 'vit': '#5cc9f5',
-  'vlm-arch': '#b07cff', 'models': '#ef6b6b', 'reasoning': '#b07cff',
-  'rag-ground': '#3dd68c', 'frontier': '#ef6b6b', 'audio-mm': '#ef9052',
-  'generation': '#b07cff', 'safety': '#f0b429', 'domain-apps': '#5cc9f5',
-  'inference': '#3dd68c', 'eval-bench': '#8ba3ff', 'resources': '#6c8aff',
-  'practice': '#3dd68c', 'interview': '#f0b429'
+  'overview': '#2563eb', 'math': '#4f46e5', 'dl': '#7c3aed', 'cv': '#16a34a',
+  'nlp': '#0891b2', 'cs-fundamentals': '#ea580c', 'transformer': '#d97706', 'arch-internals': '#7c3aed',
+  'llm': '#ea580c', 'tokenization': '#16a34a', 'vit': '#0891b2',
+  'vlm-arch': '#7c3aed', 'models': '#dc2626', 'reasoning': '#7c3aed',
+  'rag-ground': '#16a34a', 'frontier': '#dc2626', 'audio-mm': '#ea580c',
+  'generation': '#7c3aed', 'safety': '#d97706', 'domain-apps': '#0891b2',
+  'inference': '#16a34a', 'eval-bench': '#4f46e5', 'resources': '#2563eb',
+  'practice': '#16a34a', 'interview': '#d97706'
 };
 
 /* ========== Progress Tracking (localStorage) ========== */
@@ -133,8 +133,8 @@ function initApp() {
   // SVG gradient
   html += `<svg width="0" height="0" style="position:absolute"><defs>
     <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#6c8aff"/>
-      <stop offset="100%" style="stop-color:#8ba3ff"/>
+      <stop offset="0%" style="stop-color:#2563eb"/>
+      <stop offset="100%" style="stop-color:#4f46e5"/>
     </linearGradient>
   </defs></svg>`;
 
