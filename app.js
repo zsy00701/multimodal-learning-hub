@@ -14,14 +14,14 @@ const NAV_GROUPS = [
 
 /* Section accent color mapping */
 const SECTION_ACCENTS = {
-  'overview': '#5eead4', 'math': '#a5b4fc', 'dl': '#f0abfc', 'cv': '#6ee7b7',
-  'nlp': '#67e8f9', 'cs-fundamentals': '#fda4af', 'transformer': '#fde68a', 'arch-internals': '#c4b5fd',
-  'llm': '#fdba74', 'tokenization': '#5eead4', 'vit': '#7dd3fc',
-  'vlm-arch': '#d8b4fe', 'models': '#fca5a5', 'reasoning': '#f0abfc',
-  'rag-ground': '#86efac', 'frontier': '#fb7185', 'audio-mm': '#fda4af',
-  'generation': '#c4b5fd', 'safety': '#fde68a', 'domain-apps': '#67e8f9',
-  'inference': '#6ee7b7', 'eval-bench': '#a5b4fc', 'resources': '#5eead4',
-  'practice': '#5eead4', 'interview': '#fde68a'
+  'overview': '#6c8aff', 'math': '#8ba3ff', 'dl': '#b07cff', 'cv': '#3dd68c',
+  'nlp': '#5cc9f5', 'cs-fundamentals': '#ef9052', 'transformer': '#f0b429', 'arch-internals': '#b07cff',
+  'llm': '#ef9052', 'tokenization': '#3dd68c', 'vit': '#5cc9f5',
+  'vlm-arch': '#b07cff', 'models': '#ef6b6b', 'reasoning': '#b07cff',
+  'rag-ground': '#3dd68c', 'frontier': '#ef6b6b', 'audio-mm': '#ef9052',
+  'generation': '#b07cff', 'safety': '#f0b429', 'domain-apps': '#5cc9f5',
+  'inference': '#3dd68c', 'eval-bench': '#8ba3ff', 'resources': '#6c8aff',
+  'practice': '#3dd68c', 'interview': '#f0b429'
 };
 
 /* ========== Progress Tracking (localStorage) ========== */
@@ -100,109 +100,8 @@ function showToast(message) {
   toast._timer = setTimeout(() => toast.classList.remove('show'), 2000);
 }
 
-/* ========== Ethereal Particle Canvas — Celestial Fireflies ========== */
-function initParticles() {
-  const canvas = document.getElementById('particleCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let particles = [];
-  const COUNT = 55;
-
-  /* Celestial color palette for particles */
-  const COLORS = [
-    { r: 94, g: 234, b: 212 },   /* jade */
-    { r: 125, g: 211, b: 252 },  /* moonlight */
-    { r: 196, g: 181, b: 253 },  /* lavender */
-    { r: 134, g: 239, b: 172 },  /* spring mist */
-    { r: 240, g: 171, b: 252 },  /* orchid */
-    { r: 253, g: 230, b: 138 },  /* golden mist */
-    { r: 103, g: 232, b: 249 },  /* celestial cyan */
-  ];
-
-  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-  resize(); window.addEventListener('resize', resize);
-
-  for (let i = 0; i < COUNT; i++) {
-    const color = COLORS[Math.floor(Math.random() * COLORS.length)];
-    particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.15,
-      vy: (Math.random() - 0.5) * 0.12 - 0.05,  /* gentle upward drift */
-      r: Math.random() * 2 + 0.5,
-      baseAlpha: Math.random() * 0.25 + 0.05,
-      alpha: 0,
-      color: color,
-      phase: Math.random() * Math.PI * 2,       /* breathing phase */
-      breathSpeed: Math.random() * 0.015 + 0.008, /* soft pulsation */
-      wobble: Math.random() * 0.3 + 0.1,         /* horizontal sway */
-      wobblePhase: Math.random() * Math.PI * 2,
-    });
-  }
-
-  let time = 0;
-  function draw() {
-    time++;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    particles.forEach(p => {
-      /* Breathing alpha — soft glow */
-      p.phase += p.breathSpeed;
-      p.alpha = p.baseAlpha * (0.5 + 0.5 * Math.sin(p.phase));
-
-      /* Gentle wobble movement */
-      p.wobblePhase += 0.008;
-      p.x += p.vx + Math.sin(p.wobblePhase) * p.wobble * 0.1;
-      p.y += p.vy;
-
-      /* Wrap around */
-      if (p.x < -10) p.x = canvas.width + 10;
-      if (p.x > canvas.width + 10) p.x = -10;
-      if (p.y < -10) p.y = canvas.height + 10;
-      if (p.y > canvas.height + 10) p.y = -10;
-
-      /* Glow effect — larger soft circle behind */
-      const glowR = p.r * 4;
-      const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, glowR);
-      gradient.addColorStop(0, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.alpha * 0.6})`);
-      gradient.addColorStop(0.4, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.alpha * 0.15})`);
-      gradient.addColorStop(1, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, 0)`);
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, glowR, 0, Math.PI * 2);
-      ctx.fillStyle = gradient;
-      ctx.fill();
-
-      /* Core bright point */
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.alpha})`;
-      ctx.fill();
-    });
-
-    /* Ethereal connection threads — very faint silk lines */
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          const lineAlpha = 0.025 * (1 - dist / 120) * (particles[i].alpha + particles[j].alpha);
-          const avgR = (particles[i].color.r + particles[j].color.r) / 2;
-          const avgG = (particles[i].color.g + particles[j].color.g) / 2;
-          const avgB = (particles[i].color.b + particles[j].color.b) / 2;
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(${avgR}, ${avgG}, ${avgB}, ${lineAlpha})`;
-          ctx.lineWidth = 0.4;
-          ctx.stroke();
-        }
-      }
-    }
-    requestAnimationFrame(draw);
-  }
-  draw();
-}
+/* ========== Particles — disabled for clean theme ========== */
+function initParticles() { /* no-op for clean theme */ }
 
 /* ========== Animated Counter ========== */
 function animateCounter(el, target) {
@@ -234,9 +133,8 @@ function initApp() {
   // SVG gradient
   html += `<svg width="0" height="0" style="position:absolute"><defs>
     <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#5eead4"/>
-      <stop offset="50%" style="stop-color:#7dd3fc"/>
-      <stop offset="100%" style="stop-color:#c4b5fd"/>
+      <stop offset="0%" style="stop-color:#6c8aff"/>
+      <stop offset="100%" style="stop-color:#8ba3ff"/>
     </linearGradient>
   </defs></svg>`;
 
@@ -262,7 +160,7 @@ function initApp() {
     <div class="stat-card"><div class="stat-num" data-target="${totalPapers}" data-suffix="+">0</div><div class="stat-label">必读论文</div></div>
     <div class="stat-card"><div class="stat-num" data-target="${totalCode}" data-suffix="+">0</div><div class="stat-label">代码仓库</div></div>
     <div class="stat-card">
-      <div class="stat-num" style="-webkit-text-fill-color:transparent;background:linear-gradient(135deg,#fde68a,#fdba74);-webkit-background-clip:text;background-clip:text;">
+      <div class="stat-num">
         ${streak.count > 0 ? `<span class="streak-fire">🔥</span> ${streak.count}` : '∞'}
       </div>
       <div class="stat-label">${streak.count > 0 ? '连续学习天数' : '学习激情'}</div>
